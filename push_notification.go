@@ -45,11 +45,25 @@ type Payload struct {
 	Sound            string      `json:"sound,omitempty"`
 	ContentAvailable int         `json:"content-available,omitempty"`
 	Category         string      `json:"category,omitempty"`
+	NotificationType string      `json:"notification_type"`
+	Parameters       []string    `json:"parameters"`
+	Type             string      `json:"type"`
+}
+
+// Header contains the notification data expiry and priority
+type Header struct {
+	Expiry   uint32 `json:"expiry"`
+	Priority uint8  `json:"priority"`
 }
 
 // NewPayload creates and returns a Payload structure.
 func NewPayload() *Payload {
 	return new(Payload)
+}
+
+// NewHeader creates and returns a Header structure.
+func NewHeader() *Header {
+	return new(Header)
 }
 
 // AlertDictionary is a more complex notification payload.
@@ -112,6 +126,11 @@ func (pn *PushNotification) AddPayload(p *Payload) {
 		p.Badge = -1
 	}
 	pn.Set("aps", p)
+}
+
+// AddHeaders set the header value of the request.
+func (pn *PushNotification) AddHeaders(p *Header) {
+	pn.Set("headers", p)
 }
 
 // Get returns the value of a payload key, if it exists.

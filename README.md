@@ -1,6 +1,5 @@
-!!! WARNING:\
-This is the clone of https://github.com/anachronistic/apns. We need it because MCA backend (https://github.com/odrapps/mylifejournalbackend) uses this specific version, which is not present in original repo anymore.
-
+!!! WARNING:
+This is the clone of https://github.com/anachronistic/apns. We need it because MCA backend (https://github.com/odrapps/mylifejournalbackend) uses this patched version.
 
 # apns
 
